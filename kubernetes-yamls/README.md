@@ -37,5 +37,17 @@ docker build -t flask-app .
 docker tag flask-app registry.digitalocean.com/at-apps-registry/flask-app:latest
 doctl registry login
 docker push registry.digitalocean.com/at-apps-registry/flask-app:latest
+```
 
-![image](https://github.com/user-attachments/assets/b9536f69-2250-49ef-8133-706b7310c013)
+
+### ✅ 2. Apply all yamls
+
+```bash
+kubectl delete -f configmap.yaml
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml
+```
+
+ ### Example of setup: Access app at LOadbalancer ip
+
+![image](https://github.com/user-attachments/assets/c3e8e7dd-6c41-48af-b9e4-76642250c07a)
