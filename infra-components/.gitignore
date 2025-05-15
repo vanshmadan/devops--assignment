@@ -1,0 +1,19 @@
+# Terraform
+.terraform/
+terraform.tftstate
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform.lock.hcl
+
+# Python
+*.pyc
+*.pyo
+__pycache__
+*.egg-info
+
+# Other
+*.log
+*.tmp
+.DS_Store
