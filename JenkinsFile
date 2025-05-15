@@ -39,7 +39,7 @@ pipeline {
       }
     }
 
-    stages {
+ 
     stage('Deploy to K8s') {
       steps {
         kubernetes(
@@ -54,7 +54,7 @@ pipeline {
         }
       }
     }
- }
+ 
     stage('Verify Deployment') {
       steps {
         script {
