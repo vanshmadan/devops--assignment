@@ -38,3 +38,4 @@ docker tag flask-app registry.digitalocean.com/at-apps-registry/flask-app:latest
 doctl registry login
 docker push registry.digitalocean.com/at-apps-registry/flask-app:latest
 
+![image](https://github.com/user-attachments/assets/b9536f69-2250-49ef-8133-706b7310c013)
