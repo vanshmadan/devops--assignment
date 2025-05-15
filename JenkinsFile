@@ -47,6 +47,8 @@ pipeline {
           serverUrl: 'https://b166cf10-39ff-4320-b1d6-119c7316f177.k8s.ondigitalocean.com' // Optional; helps plugin inject context
         ]) {
           sh '''
+            sudo curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"
+            sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
             kubectl apply -f k8s/configmap.yaml
             kubectl apply -f k8s/deployment.yaml
             kubectl apply -f k8s/service.yaml
