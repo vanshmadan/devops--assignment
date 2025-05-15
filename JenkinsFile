@@ -1,7 +1,11 @@
 @Library('jenkins-shared-lib') _
 
 pipeline {
-  agent any
+  agent {
+  docker {
+    image 'bitnami/kubectl:latest'
+    }
+  }
 
   environment {
     DOCKER_IMAGE = "registry.digitalocean.com/at-apps-registry/flask-app:latest"
