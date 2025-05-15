@@ -10,6 +10,7 @@ pipeline {
   }
 
   stages {
+
     stage('Checkout') {
       steps {
         checkout scm
@@ -18,8 +19,10 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        script {
-          buildDockerImage(image: env.DOCKER_IMAGE)
+        dir('docker') {
+          script {
+            buildDockerImage(image: env.DOCKER_IMAGE)
+          }
         }
       }
     }
@@ -27,8 +30,10 @@ pipeline {
     stage('Push to DOCR') {
       steps {
         withCredentials([string(credentialsId: env.DO_API_TOKEN_CRED, variable: 'DO_API_TOKEN')]) {
-          script {
-            pushToDOCR(image: env.DOCKER_IMAGE, token: DO_API_TOKEN)
+          dir('DevOpsHiring') {
+            script {
+              pushToDOCR(image: env.DOCKER_IMAGE, token: DO_API_TOKEN)
+            }
           }
         }
       }
@@ -37,8 +42,10 @@ pipeline {
     stage('Deploy to Kubernetes') {
       steps {
         withCredentials([file(credentialsId: env.KUBECONFIG_CRED, variable: 'KUBECONFIG')]) {
-          script {
-            deployToK8s(image: env.DOCKER_IMAGE)
+          dir('kubernetes-yamls') {
+            script {
+              deployToK8s(image: env.DOCKER_IMAGE)
+            }
           }
         }
       }
@@ -47,7 +54,7 @@ pipeline {
     stage('Verify Deployment') {
       steps {
         script {
-          verifyDeployment(url: "http://flask.local/health")
+          verifyDeployment(url: "http://139.59.55.164/")
         }
       }
     }
