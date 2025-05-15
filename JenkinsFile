@@ -1,11 +1,7 @@
 @Library('jenkins-shared-lib') _
 
 pipeline {
-  agent {
-  docker {
-    image 'bitnami/kubectl:latest'
-    }
-  }
+  agent any
 
   environment {
     DOCKER_IMAGE = "registry.digitalocean.com/at-apps-registry/flask-app:latest"
@@ -43,18 +39,22 @@ pipeline {
       }
     }
 
-    stage('Deploy to Kubernetes') {
+    stages {
+    stage('Deploy to K8s') {
       steps {
-        withCredentials([file(credentialsId: env.KUBECONFIG_CRED, variable: 'KUBECONFIG')]) {
-          dir('kubernetes-yamls') {
-            script {
-              deployToK8s(image: env.DOCKER_IMAGE)
-            }
-          }
+        kubernetes(
+          kubeconfigId: "${KUBE_CRED_ID}",
+          kubectlVersion: '1.28.0'  // You can adjust this
+        ) {
+          sh '''
+            kubectl apply -f k8s/configmap.yaml
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
+          '''
         }
       }
     }
-
+ }
     stage('Verify Deployment') {
       steps {
         script {
