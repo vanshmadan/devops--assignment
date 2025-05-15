@@ -49,9 +49,9 @@ pipeline {
           sh '''
             sudo curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"
             sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-            kubectl apply -f k8s/configmap.yaml
-            kubectl apply -f k8s/deployment.yaml
-            kubectl apply -f k8s/service.yaml
+            kubectl apply -f kubernetes-yamls/configmap.yaml
+            kubectl apply -f kubernetes-yamls/deployment.yaml
+            kubectl apply -f kubernetes-yamls/service.yaml
           '''
         }
       }
