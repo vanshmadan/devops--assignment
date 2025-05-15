@@ -19,7 +19,7 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        dir('docker') {
+        dir('DevOpsHiring') {
           script {
             buildDockerImage(image: env.DOCKER_IMAGE)
           }
