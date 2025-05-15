@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"container_registry","Source":"./modules/container_registry","Dir":"modules/container_registry"},{"Key":"doks_cluster","Source":"./modules/doks_cluster","Dir":"modules/doks_cluster"}]}
