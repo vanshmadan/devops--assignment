@@ -40,12 +40,12 @@ pipeline {
     }
 
  
-    stage('Deploy to K8s') {
+    stage('Deploy to Kubernetes') {
       steps {
-        kubernetes(
-          kubeconfigId: "${KUBECONFIG_CRED}",
-          kubectlVersion: '1.28.0'  
-        ) {
+        withKubeConfig([
+          credentialsId: 'kubeconfig',
+          serverUrl: 'https://b166cf10-39ff-4320-b1d6-119c7316f177.k8s.ondigitalocean.com' // Optional; helps plugin inject context
+        ]) {
           sh '''
             kubectl apply -f k8s/configmap.yaml
             kubectl apply -f k8s/deployment.yaml
