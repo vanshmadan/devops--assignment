@@ -26,14 +26,6 @@
 - Externalizes environment variables like `FLASK_ENV` and `PORT`
 - Can be mounted in place of `env:` blocks in the deployment
 
-#### 4. `Apply all yamls`
-
-```bash
-kubectl delete -f configmap.yaml
-kubectl delete -f deployment.yaml
-kubectl delete -f service.yaml
-```
-
 ---
 
 ## 🛠️  Instructions
@@ -45,4 +37,12 @@ docker build -t flask-app .
 docker tag flask-app registry.digitalocean.com/at-apps-registry/flask-app:latest
 doctl registry login
 docker push registry.digitalocean.com/at-apps-registry/flask-app:latest
+```
 
+### ✅ 2. Apply all yamls
+
+```bash
+kubectl delete -f configmap.yaml
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml
+```
