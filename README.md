@@ -38,6 +38,7 @@ Go to **Manage Jenkins > Credentials > Global** and add the following:
 
 ## Repository Structure
 
+```
 ├── Jenkinsfile # Main declarative pipeline
 ├── DevOpsHiring/ # Dockerfile and app
 │ ├── Dockerfile
@@ -57,5 +58,5 @@ Go to **Manage Jenkins > Credentials > Global** and add the following:
 │ ├── terraform.tfvars
 │ ├── modules/
 
-
+```
 
