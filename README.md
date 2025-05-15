@@ -1,4 +1,4 @@
-# ⚙️ Jenkins CI/CD Pipeline for Flask App Deployment to DOKS
+# ⚙️ Flask App Deployment to DOKS using Jenkins
 
 This repository defines a **Jenkins pipeline** that:
 
