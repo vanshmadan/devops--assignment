@@ -12,7 +12,7 @@
   - 2 replicas
   - Liveness and readiness probes
   - CPU/memory requests and limits
-  - Environment variables via inline config or optional ConfigMap
+  - Environment variables via  ConfigMap
 
 ### 2. `service.yaml`
 
@@ -32,6 +32,7 @@
 kubectl delete -f configmap.yaml
 kubectl delete -f deployment.yaml
 kubectl delete -f service.yaml
+```
 
 ---
 
