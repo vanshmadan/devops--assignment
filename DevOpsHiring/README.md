@@ -25,7 +25,7 @@ Docker-compose
 - Create non root user and switch to non root user
 - Run the app as per app’s entrypoint
 
-### DOCKER COMPOSE YAML BREAKDOWN
+### ✅ DOCKER COMPOSE YAML BREAKDOWN :
 - Live reload using watchdog
 - Readable logs
 - Source code mount
@@ -37,4 +37,4 @@ Docker-compose
 docker-compose up
 
 ```
--d flag can be used for detach mode
+```-d``` flag can be used for detach mode
